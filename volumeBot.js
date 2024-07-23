@@ -1,0 +1,1 @@
+generateWallets(5);

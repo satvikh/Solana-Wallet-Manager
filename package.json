@@ -5,12 +5,14 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "volumeBot": "volumeBot.js",
+    "walletFunctions": "walletFunctions.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@solana/web3.js": "^1.95.1"
+    "@solana/web3.js": "^1.95.1",
+    "bs58": "^6.0.0"
   }
 }

@@ -1,4 +1,6 @@
-import bs58 from 'bs58'
+
+const bs58=require('bs58');
+const fs=require('fs');
 
 //generates a seedPhrase can be used to generate multiple wallets
 function generateMnemonic(){
@@ -10,11 +12,25 @@ function generateMnemonic(){
 //generates x amount of wallets on the solana blockchain and stores the private keys in storedWallets.json
 function generateWallets(num){ 
     if (typeof num === 'number'){
+        fs.writefile('storedWallets.json', JSON.stringify({}), (err) => {
+            if (err){
+                throw new Error(err);
+        }
+        console.log('Wallet file successfully accessed')
+    })
+
+
+
+
         const mnemonic = storedWallets.json[mnemonic];
-
-
         const seed = bip39.mnemonicToSeedSync(mnemonic); // (mnemonic, password)
+
+
         for (let i = 0; i < num; i++) {
+
+
+
+
             let walletName = `wallet${i}`;
             const path = `m/44'/501'/${i}'/0'`;
             const keypair = Keypair.fromSeed(derivePath(path, seed.toString("hex")).key);
@@ -45,3 +61,11 @@ function distributeFunds(){
 
     }
 }
+
+
+
+
+
+
+
+export {generateMnemonic, generateWallets};

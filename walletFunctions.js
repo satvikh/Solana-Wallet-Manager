@@ -3,6 +3,9 @@ import bs58 from 'bs58';
 import fs from 'fs';
 import bip39 from 'bip39';
 
+
+
+
 //generates a seedPhrase can be used to generate multiple wallets
 function generateMnemonic(){
     const mnemonic = bip39.generateMnemonic();
@@ -15,7 +18,7 @@ function generateMnemonic(){
         //parse json
         let jsonObject = JSON.parse(data);
 
-        jsonObject[0] = mnemonic;
+        jsonObject["seed phrase"] = mnemonic;
         console.log('Seedphrase successfully stored');
     });
 
@@ -68,10 +71,23 @@ function checkBalance(){
 
 }
 
-function distributeFunds(){
-    for (let i=0; i<storedWallets.json.length-1; i++){ //added a -1 because the first wallet will be the seedphrase wallet
-        //send funds to each wallet
+function distributeFunds(amount, wallets){
 
+    // first need to read files**************
+
+    //create a for loop to iterate through the wallets
+
+
+    for (let i=0; i<wallets; i++){ 
+        
+        //check whether sender wallet has funds
+        
+        
+        
+            //if sender wallet has funds, send funds to receiver wallet
+            
+        //otherwise pass to the next wallet and console log an error message
+    
     }
 }
 

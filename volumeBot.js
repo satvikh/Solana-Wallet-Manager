@@ -8,4 +8,4 @@ import {generateMnemonic, generateWallets} from './walletFunctions.js';
 
 
 
-generateWallets(5);
+generateMnemonic();

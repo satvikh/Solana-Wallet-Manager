@@ -10,18 +10,27 @@ import bip39 from 'bip39';
 function generateMnemonic(){
     const mnemonic = bip39.generateMnemonic();
     console.log(mnemonic);
-    fs.writeFileSync('storedWallets.json', JSON.stringify({}), (err) => {
-        if (err){
-            throw new Error(err);
+    //Reading Json file
+    fs.readFile('storedWallets.json', 'utf8', (err, data) => {
+        if (err) {
+          console.error(err);
+          return;
         }
 
-        //parse json
-        let jsonObject = JSON.parse(data);
+        let storedWallets=JSON.parse(data);
 
-        jsonObject["seed phrase"] = mnemonic;
-        console.log('Seedphrase successfully stored');
+        //storing seedphrase in storedWallets.json
+        storedWallets.seedPhrase = mnemonic;
+
+        //reconverting JSON
+        fs.writeFile('storedWallets.json', JSON.stringify(storedWallets), 'utf8', (err) => {
+            if (err) {
+            console.error(err);
+            return;
+            }
+            console.log('Seedphrase successfully updated');;
+        });
     });
-
 }
 
 
